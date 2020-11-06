@@ -15,7 +15,7 @@ import java.util.List;
 @RequiredArgsConstructor
 public abstract class GenericDAO <K, ID> {
 
-    Logger logger = LoggerFactory.getLogger("Logger");
+    public Logger logger = LoggerFactory.getLogger("Logger");
 
     private Connection connection;
     private Statement statement;
@@ -31,7 +31,7 @@ public abstract class GenericDAO <K, ID> {
             return convertToList(resultSet);
 
         } catch (SQLException exception) {
-            logger.error("Error occurred while getting all entities from table ={}. Exeption message: {}", getTableName(), exception.getMessage());
+            logger.error("Error occurred while getting all entities from table = {}. Exeption message: {}", getTableName(), exception.getMessage());
             throw new InternalException(String.valueOf(exception));
         }
 

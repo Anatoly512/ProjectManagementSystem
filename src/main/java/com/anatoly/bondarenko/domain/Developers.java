@@ -2,11 +2,9 @@ package com.anatoly.bondarenko.domain;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
-import lombok.NoArgsConstructor;
 
 @Data
 @AllArgsConstructor
-@NoArgsConstructor
 public class Developers {
 
     private Long id;
@@ -27,7 +25,7 @@ public class Developers {
     }
 
 
-// getters
+// getters  (Lombok почему-то не создал их автоматически, поэтому по старинке)
 
     public String getName() {
        return this.name;

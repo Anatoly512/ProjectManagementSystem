@@ -10,10 +10,9 @@ import lombok.RequiredArgsConstructor;
 public class Main {
 
 
-
     private static final String URL = "jdbc:postgresql://localhost:5432/postgres?useUnicode=true&useJDBCCompliantTimezoneShift=true&useLegacyDatetimeCode=false&serverTimezone=UTC";
     private static final String USER = "postgres";
-    private static final String PASSWORD = "54321";
+    private static final String PASSWORD = "12345";
 
 
 
@@ -21,7 +20,8 @@ public class Main {
 
         DevelopersDAO developersDAO = new DevelopersDAO();
 
-        System.out.println(developersDAO.getAllEntities());
+        System.out.println("\n" + developersDAO.getAllEntities());
+
 
     }
 
