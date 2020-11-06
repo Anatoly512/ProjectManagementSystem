@@ -70,13 +70,17 @@ fabric.properties
 # main adds
 .idea/
 .target
+.target/
 .DS_STORE
 /src/main/resourses/log
 /lib
+/lib/
 /target
+/target/
 *target
+*target/
 *lib
+*lib/
 .idea
-*.iws
 *.ixml
-*.ipr
+
