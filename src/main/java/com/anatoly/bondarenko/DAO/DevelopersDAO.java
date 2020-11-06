@@ -32,9 +32,7 @@ public class DevelopersDAO extends GenericDAO <Developers, Long> {
         try {
             while (resultSet.next()){
                 Developers developerEntity = new Developers();  //  Пустой конструктор.  Получается, поля будут не заполнены (на этом этапе).
-                                                               //  Далее поля заполняются через сеттеры в обязательном порядке.
-                // logger.info(String.valueOf(resultSet));
-
+                                                                //  Далее поля заполняются через сеттеры в обязательном порядке.
                 developerEntity.setId(resultSet.getLong("id"));
                 developerEntity.setName(resultSet.getString("name"));
                 developerEntity.setGender(Gender.valueOf(resultSet.getString("gender").toUpperCase()));
