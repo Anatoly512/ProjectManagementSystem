@@ -74,3 +74,9 @@ fabric.properties
 /src/main/resourses/log
 /lib
 /target
+*target
+*lib
+.idea
+*.iws
+*.ixml
+*.ipr
