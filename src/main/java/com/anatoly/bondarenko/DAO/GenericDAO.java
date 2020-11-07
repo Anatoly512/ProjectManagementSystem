@@ -38,6 +38,50 @@ public abstract class GenericDAO <K, ID> {
     }
 
 
+    public void deleteEntity(Long id) {
+        String query = "DELETE FROM `" + getTableName() + "` WHERE " + getColumnId() + " = " + id;
+        try {
+            connection = DriverManager.getConnection(Main.getURL(), Main.getUser(), Main.getPassword());
+            statement = connection.createStatement();
+            statement.executeUpdate(query);
+        }
+        catch (SQLException exception) {
+            logger.error("Error occurred while delete entity from table = {}. Exeption message: {}", getTableName(), exception.getMessage());
+            throw new InternalException(String.valueOf(exception));
+        }
+    }
+
+    public void addNewEntity(K value) {
+        String query = createQuery(value);
+        try {
+            connection = DriverManager.getConnection(Main.getURL(), Main.getUser(), Main.getPassword());
+            statement = connection.createStatement();
+            statement.executeUpdate(query);
+        }
+        catch (SQLException exception) {
+            logger.error("Error occurred while add new entity to table = {} . Exeption message: {}", getTableName(), exception.getMessage());
+            throw new InternalException(String.valueOf(exception));
+        }
+    }
+
+    public void updateEntity(Long id, K value) {
+        String query = createQueryForUpdate(id, value);
+        try {
+            connection = DriverManager.getConnection(Main.getURL(), Main.getUser(), Main.getPassword());
+            statement = connection.createStatement();
+            statement.executeUpdate(query);
+        } catch (SQLException exception) {
+            logger.error("Error occurred while update entity to table = {} . Exeption message: {}", getTableName(), exception.getMessage());
+            throw new InternalException(String.valueOf(exception));
+        }
+    }
+
+
+
+
+
+
+
     protected abstract String createQueryForUpdate(Long id, K value);
 
     protected abstract String createQuery(K value);

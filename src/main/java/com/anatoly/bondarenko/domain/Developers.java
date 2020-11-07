@@ -43,6 +43,10 @@ public class Developers {
         return this.salary;
     }
 
+    public Long getId() {
+        return this.id;
+    }
+
 
 //  setters
 
