@@ -60,7 +60,7 @@ public class DevelopersDAO extends GenericDAO <Developers, Long> {
 
     @Override
     protected String getColumnId() {
-        return "developers_id";
+        return "id";
     }
 
 
