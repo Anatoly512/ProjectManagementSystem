@@ -1,28 +1,25 @@
 package com.anatoly.bondarenko.domain;
 
-import lombok.AllArgsConstructor;
 import lombok.Data;
 
 @Data
-@AllArgsConstructor
 public class Developers {
 
     private Long id;
     private String name;
     private Gender gender;
     private int age;
-    private int salary;
 
-    public Developers(String name, Gender gender, int age, int salary) {
+    public Developers(Long id, String name, Gender gender, int age) {
+        this.id = id;
         this.name = name;
         this.gender = gender;
         this.age = age;
-        this.salary = salary;
     }
 
-    public Developers() {
-
-    }
+   public Developers() {     //  Этот конструктор нужен для корректной работы класса DevelopersDAO,
+                             //  пустые поля потом (после создания объекта) заполняются через сеттеры
+   }
 
 
 // getters  (Lombok почему-то не создал их автоматически, поэтому по старинке)
@@ -37,10 +34,6 @@ public class Developers {
 
     public int getAge() {
         return this.age;
-    }
-
-    public int getSalary() {
-        return this.salary;
     }
 
     public Long getId() {
@@ -60,10 +53,6 @@ public class Developers {
 
     public void setAge(int age) {
         this.age = age;
-    }
-
-    public void setSalary(int salary) {
-        this.salary = salary;
     }
 
     public void setId(Long id) {

@@ -13,20 +13,19 @@ import java.util.List;
 
 @Data
 @RequiredArgsConstructor
-public abstract class GenericDAO <K, ID> {
+public abstract class GenericDAO <K> {
 
     public Logger logger = LoggerFactory.getLogger("Logger");
 
     private Connection connection;
     private Statement statement;
-    private ResultSet resultSet;
 
     public List<K> getAllEntities() {
         String query = "SELECT * FROM " + getTableName();
         try {
             connection = DriverManager.getConnection(Main.getURL(), Main.getUser(), Main.getPassword());
             statement = connection.createStatement();
-            resultSet = statement.executeQuery(query);
+            ResultSet resultSet = statement.executeQuery(query);
 
             return convertToList(resultSet);
 
