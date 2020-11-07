@@ -52,6 +52,10 @@ public abstract class GenericDAO <K> {
 
     public void addNewEntity(K value) {
         String query = createQuery(value);
+
+        //  Тестовый вывод запроса в базу данных
+            System.out.println(query + "\n");
+
         try {
             connection = DriverManager.getConnection(Main.getURL(), Main.getUser(), Main.getPassword());
             statement = connection.createStatement();

@@ -54,9 +54,9 @@ public class Main {
 
 
     //  Дональд Трамп кажется остался без работы
-        System.out.println("\n" + new Developers(6L,"Trump Donald", Gender.MALE, 70));
+        System.out.println("\n Entity: " + new Developers(6L,"Trump Donald", Gender.MALE, 70) + "\n");
 
-     //   developersService.addNewDeveloper(new Developers("Trump Donald", Gender.MALE, 70));
+        developersService.addNewDeveloper(new Developers(6L,"Trump Donald", Gender.MALE, 70));
 
 
 

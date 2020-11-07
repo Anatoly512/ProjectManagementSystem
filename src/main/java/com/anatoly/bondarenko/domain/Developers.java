@@ -8,9 +8,9 @@ public class Developers {
     private Long id;
     private String name;
     private Gender gender;
-    private int age;
+    private Integer age;
 
-    public Developers(Long id, String name, Gender gender, int age) {
+    public Developers(Long id, String name, Gender gender, Integer age) {
         this.id = id;
         this.name = name;
         this.gender = gender;
@@ -32,7 +32,7 @@ public class Developers {
         return this.gender;
     }
 
-    public int getAge() {
+    public Integer getAge() {
         return this.age;
     }
 
@@ -51,7 +51,7 @@ public class Developers {
         this.gender = gender;
     }
 
-    public void setAge(int age) {
+    public void setAge(Integer age) {
         this.age = age;
     }
 
