@@ -51,14 +51,18 @@ public class DevelopersDAO extends GenericDAO <Developers, Long> {
 
 
 
+
     @Override
     protected String getTableName() {
         return "developers";
     }
 
+
     @Override
     protected String getColumnId() {
         return "developers_id";
     }
+
+
 
 }
