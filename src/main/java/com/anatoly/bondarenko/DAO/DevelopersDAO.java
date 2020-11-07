@@ -14,14 +14,14 @@ public class DevelopersDAO extends GenericDAO <Developers, Long> {
 
     @Override
     protected String createQueryForUpdate(Long id, Developers developers) {
-        return String.format("UPDATE `my_db`.`developers` SET name = '%s', Gender = '%s', age = '%d', salary = '%s' WHERE developers_id = '%d'",
+        return String.format("UPDATE `postgres`.`developers` SET name = '%s', Gender = '%s', age = '%d', salary = '%s' WHERE id = '%d'",
                 developers.getName(), developers.getGender(), developers.getAge(), developers.getSalary(), id);
     }
 
 
     @Override
     protected String createQuery(Developers developers) {
-        return String.format("INSERT INTO `my_db`.`developers` ( `name`, `gender`, `age`,`salary`) VALUES ( '%s','%s', '%d', '%s')",
+        return String.format("INSERT INTO `postgres`.`developers` ( `name`, `gender`, `age`,`salary`) VALUES ( '%s','%s', '%d', '%s')",
                 developers.getName(), developers.getGender(),developers.getAge(), developers.getSalary());
     }
 
