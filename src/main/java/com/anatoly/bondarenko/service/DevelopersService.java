@@ -16,7 +16,6 @@ public class DevelopersService {
     }
 
 
-
     public List<Developers> getAllDevelopers() {
 
         return developersDAO.getAllEntities();
