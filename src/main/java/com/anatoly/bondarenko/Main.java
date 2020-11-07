@@ -2,6 +2,7 @@ package com.anatoly.bondarenko;
 
 
 import com.anatoly.bondarenko.DAO.DevelopersDAO;
+import com.anatoly.bondarenko.service.DevelopersService;
 import lombok.Data;
 import lombok.RequiredArgsConstructor;
 
@@ -21,6 +22,15 @@ public class Main {
         DevelopersDAO developersDAO = new DevelopersDAO();
 
         System.out.println("\n" + developersDAO.getAllEntities());
+
+
+        DevelopersService developersService = new DevelopersService(developersDAO);
+
+        System.out.println("\n" + developersService.getAllDevelopers());
+
+
+
+
 
 
     }
