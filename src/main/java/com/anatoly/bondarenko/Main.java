@@ -55,10 +55,10 @@ public class Main {
 
        //  Дональд Трамп кажется остался без работы
 
-
         //  Donald's interview
         try {
             developersService.addNewDeveloper(new Developers(6L, "Trump Donald", Gender.MALE, 70));
+            System.out.println("Welcome to go home, Donald!");
         }
          catch (InternalException exception) {
              System.out.println("Кажется, Дональд Трамп был уже принят на работу!");
