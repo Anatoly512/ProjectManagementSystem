@@ -8,18 +8,15 @@ import com.sun.jdi.InternalException;
 import lombok.Data;
 import lombok.RequiredArgsConstructor;
 
-import java.sql.*;
-
 @Data
 @RequiredArgsConstructor
 public class Main {
-
 
     private static final String URL = "jdbc:postgresql://localhost:5432/postgres";
     private static final String USER = "postgres";
     private static final String PASSWORD = "12345";
 
-
+    static ShowTables showTables = new ShowTables();    //  Все представления данных вынесены в класс ShowTables
 
     public static void main(String[] args){
 
@@ -30,39 +27,21 @@ public class Main {
         System.out.println("\n" + developersService.getAllDevelopers() + "\n");      //  Тестовый вывод (через DevelopersService)
 
         //  Тестовый вывод всей таблицы developers
-        try {
-            Connection connection;
-            Statement statement;
-
-            connection = DriverManager.getConnection(getURL(), getUser(), getPassword());
-            statement = connection.createStatement();
-
-            ResultSet resultSet = statement.executeQuery("SELECT * FROM developers");
-
-            while (resultSet.next()) {
-                Long id = resultSet.getLong("id");
-                String name = resultSet.getString("name");;
-                String genderString = resultSet.getString("gender");
-                Gender gender = Gender.valueOf(genderString);
-                int age = resultSet.getInt("age");
-                System.out.println(String.format(" DEVELOPERS:  id = %d, name = %s, genger = %s, age = %s", id, name, gender, age));
-            }
-        } catch (SQLException exception) {
-            developersDAO.logger.error("Error occurred while getting entities. Exeption message: {}", exception.getMessage());
-            throw new InternalException(String.valueOf(exception));
-        }
+        showTables.displayDevelopers(developersDAO);
 
 
        //  Дональд Трамп кажется остался без работы
 
         //  Donald's interview
-/*        try {
+/*
+        try {
             developersService.addNewDeveloper(new Developers(6L, "Trump Donald", Gender.MALE, 70));
             System.out.println("Welcome to go home, Donald!");
         }
          catch (InternalException exception) {
              System.out.println("Кажется, Дональд Трамп был уже принят на работу!");
-         }*/
+         }
+*/
 
 
         //  You're fired, Donald Trump!
@@ -79,6 +58,8 @@ public class Main {
 
 
     }
+
+
 
 
 
