@@ -38,7 +38,11 @@ public abstract class GenericDAO <K> {
 
 
     public void deleteEntity(Long id) {
-        String query = "DELETE FROM `" + getTableName() + "` WHERE " + getColumnId() + " = " + id;
+        String query = "DELETE FROM " + getTableName() + " WHERE " + getColumnId() + " = " + id;
+
+    //  Тестовый вывод запроса в базу данных
+        System.out.println("\n" + query + "\n");
+
         try {
             connection = DriverManager.getConnection(Main.getURL(), Main.getUser(), Main.getPassword());
             statement = connection.createStatement();
@@ -54,7 +58,7 @@ public abstract class GenericDAO <K> {
         String query = createQuery(value);
 
         //  Тестовый вывод запроса в базу данных
-            System.out.println(query + "\n");
+            System.out.println("\n" + query + "\n");
 
         try {
             connection = DriverManager.getConnection(Main.getURL(), Main.getUser(), Main.getPassword());

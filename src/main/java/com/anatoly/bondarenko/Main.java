@@ -29,7 +29,7 @@ public class Main {
         DevelopersService developersService = new DevelopersService(developersDAO);
         System.out.println("\n" + developersService.getAllDevelopers() + "\n");      //  Тестовый вывод (через DevelopersService)
 
-        //  Тестовый вывод всей таблицы postgres.developers
+        //  Тестовый вывод всей таблицы developers
         try {
             Connection connection;
             Statement statement;
@@ -53,13 +53,28 @@ public class Main {
         }
 
 
-    //  Дональд Трамп кажется остался без работы
-        System.out.println("\n Entity: " + new Developers(6L,"Trump Donald", Gender.MALE, 70) + "\n");
-
-        developersService.addNewDeveloper(new Developers(6L,"Trump Donald", Gender.MALE, 70));
+       //  Дональд Трамп кажется остался без работы
 
 
+        //  Donald's interview
+        try {
+            developersService.addNewDeveloper(new Developers(6L, "Trump Donald", Gender.MALE, 70));
+        }
+         catch (InternalException exception) {
+             System.out.println("Кажется, Дональд Трамп был уже принят на работу!");
+         }
 
+        //  You're fired, Donald Trump!
+/*
+        try {
+            developersService.deleteDeveloper(6L);
+            System.out.println("You're fired, Donald Trump!");
+        }
+        catch (InternalException exception) {
+            System.out.println("Его фиг уволишь! :)");
+            System.out.println("Впрочем, возможно такого работника у нас и не было.");
+        }
+*/
 
     }
 
