@@ -16,27 +16,22 @@ public class Main {
     private static final String USER = "postgres";
     private static final String PASSWORD = "12345";
 
-    static ShowTables showTables = new ShowTables();    //  Все представления данных вынесены в класс ShowTables
+    static ShowTables showTables = new ShowTables();      //  Все представления данных вынесены в класс ShowTables
+
+    private static final DevelopersDAO developersDAO = new DevelopersDAO();
+    private static final CompaniesDAO companiesDAO = new CompaniesDAO();
+    private static final CustomersDAO customersDAO = new CustomersDAO();
+    private static final ProjectsDAO projectsDAO = new ProjectsDAO();
+    private static final SkillsDAO skillsDAO = new SkillsDAO();
+    private static final DevelopersService developersService = new DevelopersService(developersDAO);
+    private static final CompaniesService companiesService = new CompaniesService(companiesDAO);
+    private static final CustomersService customersService = new CustomersService(customersDAO);
+    private static final ProjectsService projectsService = new ProjectsService(projectsDAO);
+    private static final SkillsService skillsService = new SkillsService(skillsDAO);
 
     public static void main(String[] args){
 
-        DevelopersDAO developersDAO = new DevelopersDAO();
-        CompaniesDAO companiesDAO = new CompaniesDAO();
-        CustomersDAO customersDAO = new CustomersDAO();
-        ProjectsDAO projectsDAO = new ProjectsDAO();
-        SkillsDAO skillsDAO = new SkillsDAO();
-        DevelopersService developersService = new DevelopersService(developersDAO);
-        CompaniesService companiesService = new CompaniesService(companiesDAO);
-        CustomersService customersService = new CustomersService(customersDAO);
-        ProjectsService projectsService = new ProjectsService(projectsDAO);
-        SkillsService skillsService = new SkillsService(skillsDAO);
-
-        System.out.println("\n" + developersDAO.getAllEntities());               //  Тестовый вывод таблицы (через DAO)
-        System.out.println("\n" + developersService.getAllDevelopers());          //  Тестовый вывод (через DevelopersService)
-        System.out.println("\n" + companiesService.getAllCompanies());            //  Тестовый вывод (через CompaniesService)
-        System.out.println("\n" + customersService.getAllCustomers());            //  Тестовый вывод (через CustomersService)
-        System.out.println("\n" + projectsService.getAllProjects());              //  Тестовый вывод (через  ProjectsService)
-        System.out.println("\n" + skillsService.getAllSkills() + "\n");           //  Тестовый вывод (через SkillsService)
+        displayAllTablesTestSimpleView();  //  Тестовый вывод таблиц
 
         //  Тестовый вывод таблиц в удобном виде
         showTables.displayDevelopers(developersDAO);
@@ -79,6 +74,16 @@ public class Main {
 
 
 
+    public static void displayAllTablesTestSimpleView() {
+
+        System.out.println("\n" + developersDAO.getAllEntities());         //  Тестовый вывод таблицы (через DAO)
+        System.out.println("\n" + developersService.getAllDevelopers());    //  Тестовый вывод (через DevelopersService)
+        System.out.println("\n" + companiesService.getAllCompanies());      //  Тестовый вывод (через CompaniesService)
+        System.out.println("\n" + customersService.getAllCustomers());      //  Тестовый вывод (через CustomersService)
+        System.out.println("\n" + projectsService.getAllProjects());        //  Тестовый вывод (через  ProjectsService)
+        System.out.println("\n" + skillsService.getAllSkills() + "\n");     //  Тестовый вывод (через SkillsService)
+
+    }
 
 
     public static String getURL() {
