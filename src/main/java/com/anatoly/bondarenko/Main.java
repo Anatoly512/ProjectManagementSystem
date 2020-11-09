@@ -21,13 +21,14 @@ public class Main {
     public static void main(String[] args){
 
         DevelopersDAO developersDAO = new DevelopersDAO();
-        System.out.println("\n" + developersDAO.getAllEntities());   //  Тестовый вывод
-
         DevelopersService developersService = new DevelopersService(developersDAO);
+
+        System.out.println("\n" + developersDAO.getAllEntities());                //  Тестовый вывод таблицы
         System.out.println("\n" + developersService.getAllDevelopers() + "\n");      //  Тестовый вывод (через DevelopersService)
 
-        //  Тестовый вывод всей таблицы developers
+        //  Тестовый вывод всей таблицы developers в удобном виде
         showTables.displayDevelopers(developersDAO);
+
 
 
        //  Дональд Трамп кажется остался без работы
