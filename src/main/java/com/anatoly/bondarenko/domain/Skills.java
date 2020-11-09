@@ -38,14 +38,17 @@ public class Skills {
 //  setters
 
     public void setLanguage(String language) {
+
         this.language = language;
     }
 
     public void setSkillLevel(SkillLevel skillLevel) {
+
         this.skillLevel = skillLevel;
     }
 
     public void setId(Long id) {
+
         this.id = id;
     }
 
