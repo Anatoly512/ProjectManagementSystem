@@ -130,7 +130,7 @@ public class ShowTables {
                 String language = resultSet.getString("language");
                 String levelString = resultSet.getString("level");
                 SkillLevel level = SkillLevel.valueOf(levelString);
-                System.out.println(String.format(" DEVELOPERS:  id = %d, language = %s, level = %s", id, language, level));
+                System.out.println(String.format(" SKILLS:  id = %d, language = %s, level = %s", id, language, level));
             }
         } catch (SQLException exception) {
             skillsDAO.logger.error("Error occurred while getting entities. Exeption message: {}", exception.getMessage());

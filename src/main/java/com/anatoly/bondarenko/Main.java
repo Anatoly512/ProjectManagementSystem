@@ -1,6 +1,7 @@
 package com.anatoly.bondarenko;
 
 import com.anatoly.bondarenko.DAO.*;
+import com.anatoly.bondarenko.domain.Companies;
 import com.anatoly.bondarenko.domain.Developers;
 import com.anatoly.bondarenko.domain.Gender;
 import com.anatoly.bondarenko.service.*;
@@ -68,6 +69,36 @@ public class Main {
             System.out.println("Впрочем, возможно такого работника у нас и не было.");
         }
 */
+
+
+
+        //  Основываем новую компанию
+
+/*        try {
+            companiesService.addNewCompany(new Companies(6L, "company Corporation"));
+            System.out.println("OK!");
+        }
+        catch (InternalException exception) {
+            System.out.println("Что-то не получилось!");
+        }
+
+        */
+
+
+        //  Закрываем компанию
+
+/*        try {
+            companiesService.deleteCompany(6L);
+            System.out.println("Хорошая была компания... ");
+        }
+        catch (InternalException exception) {
+            System.out.println("Какая у них крыша!.. Не закрывается! :)");
+            System.out.println("Впрочем, возможно такой компании и не было.");
+        }*/
+
+
+
+
 
 
     }
