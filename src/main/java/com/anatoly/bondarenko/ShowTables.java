@@ -1,5 +1,6 @@
 package com.anatoly.bondarenko;
 
+import com.anatoly.bondarenko.DAO.CompaniesDAO;
 import com.anatoly.bondarenko.DAO.DevelopersDAO;
 import com.anatoly.bondarenko.domain.Gender;
 import com.sun.jdi.InternalException;
@@ -30,7 +31,37 @@ public class ShowTables {
             developersDAO.logger.error("Error occurred while getting entities. Exeption message: {}", exception.getMessage());
             throw new InternalException(String.valueOf(exception));
         }
+        finally {
+            System.out.println();
+        }
 
     }
+
+
+    public void displayCompanies(CompaniesDAO companiesDAO) {
+        try {
+            Connection connection;
+            Statement statement;
+
+            connection = DriverManager.getConnection(Main.getURL(), Main.getUser(), Main.getPassword());
+            statement = connection.createStatement();
+
+            ResultSet resultSet = statement.executeQuery("SELECT * FROM companies");
+
+            while (resultSet.next()) {
+                Long id = resultSet.getLong("id");
+                String companyName = resultSet.getString("company_name");;
+                System.out.println(String.format(" COMPANIES:  id = %d, company name = %s", id, companyName));
+            }
+        } catch (SQLException exception) {
+            companiesDAO.logger.error("Error occurred while getting entities. Exeption message: {}", exception.getMessage());
+            throw new InternalException(String.valueOf(exception));
+        }
+        finally {
+            System.out.println();
+        }
+
+    }
+
 
 }

@@ -1,8 +1,10 @@
 package com.anatoly.bondarenko;
 
+import com.anatoly.bondarenko.DAO.CompaniesDAO;
 import com.anatoly.bondarenko.DAO.DevelopersDAO;
 import com.anatoly.bondarenko.domain.Developers;
 import com.anatoly.bondarenko.domain.Gender;
+import com.anatoly.bondarenko.service.CompaniesService;
 import com.anatoly.bondarenko.service.DevelopersService;
 import com.sun.jdi.InternalException;
 import lombok.Data;
@@ -21,13 +23,18 @@ public class Main {
     public static void main(String[] args){
 
         DevelopersDAO developersDAO = new DevelopersDAO();
+        CompaniesDAO companiesDAO = new CompaniesDAO();
         DevelopersService developersService = new DevelopersService(developersDAO);
+        CompaniesService companiesService = new CompaniesService(companiesDAO);
 
-        System.out.println("\n" + developersDAO.getAllEntities());                //  Тестовый вывод таблицы
-        System.out.println("\n" + developersService.getAllDevelopers() + "\n");      //  Тестовый вывод (через DevelopersService)
 
-        //  Тестовый вывод всей таблицы developers в удобном виде
+        System.out.println("\n" + developersDAO.getAllEntities());               //  Тестовый вывод таблицы (через DAO)
+        System.out.println("\n" + developersService.getAllDevelopers());          //  Тестовый вывод (через DevelopersService)
+        System.out.println("\n" + companiesService.getAllCompanies() + "\n");     //  Тестовый вывод (через CompaniesService)
+
+        //  Тестовый вывод таблиц в удобном виде
         showTables.displayDevelopers(developersDAO);
+        showTables.displayCompanies(companiesDAO);
 
 
 
