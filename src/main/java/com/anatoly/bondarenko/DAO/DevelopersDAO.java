@@ -47,8 +47,6 @@ public class DevelopersDAO extends GenericDAO <Developers> {
 
 
 
-
-
     @Override
     protected String getTableName() {
         return "developers";
