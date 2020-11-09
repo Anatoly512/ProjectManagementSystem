@@ -29,9 +29,9 @@ public class CompaniesDAO extends GenericDAO <Companies> {
         try {
             while (resultSet.next()){
                 Companies companyEntity = new Companies();  //  Пустой конструктор.  Получается, поля будут не заполнены (на этом этапе).
-                //  Далее поля заполняются через сеттеры в обязательном порядке.
+                                                            //  Далее поля заполняются через сеттеры в обязательном порядке.
                 companyEntity.setId(resultSet.getLong("id"));
-                companyEntity.setCompanyName(resultSet.getString("company_name"));
+                companyEntity.setCompanyName(resultSet.getString("company_name"));  //  Здесь: название колонки должно в точности совпадать с такой как в базе данных
                 companies.add(companyEntity);
             }
         }
