@@ -66,8 +66,8 @@ public class Main {
         showTables.displayEnities(developersProjectsService.findAllDevelopersOnTheProject(4L));
 
 
-        // !
-        System.out.println(developersProjectsService.findAllProjectsAndItsAmountOfDevelopers());
+        // Все проекты в формате -  дата создания - название проекта - количество разработчиков на этом проекте
+        showTables.displayAllEnitiesWithDate(developersProjectsService.findAllProjectsAndItsAmountOfDevelopers());
 
 
 

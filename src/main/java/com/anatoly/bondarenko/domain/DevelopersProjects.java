@@ -32,11 +32,11 @@ public class DevelopersProjects {
         return this.name;
     }
 
-    public Integer amountOfDevelopers() {
+    public Integer getAmountOfDevelopers() {
         return this.amountOfDevelopers;
     }
 
-    public Date date() {
+    public Date getDate() {
         return this.date;
     }
 

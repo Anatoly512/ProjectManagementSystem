@@ -2,11 +2,14 @@ package com.anatoly.bondarenko;
 
 import com.anatoly.bondarenko.DAO.*;
 import com.anatoly.bondarenko.domain.Developers;
+import com.anatoly.bondarenko.domain.DevelopersProjects;
 import com.anatoly.bondarenko.domain.Gender;
 import com.anatoly.bondarenko.domain.SkillLevel;
 import com.sun.jdi.InternalException;
 
 import java.math.BigDecimal;
+import java.util.Date;
+
 import java.sql.*;
 import java.util.List;
 
@@ -178,9 +181,24 @@ public class ShowTables {
 
         }
 
+    }
 
 
-}
+        public void displayAllEnitiesWithDate(List<DevelopersProjects> list) {
+
+            for (DevelopersProjects developersProjects : list) {
+
+                Date date = developersProjects.getDate();
+                String name = developersProjects.getName();
+                int amount = developersProjects.getAmountOfDevelopers();
+
+                System.out.println(String.format("  date = %s, name = %s, amount of developers = %s", date, name, amount));
+
+            }
+
+        }
+
+
 
 
 
