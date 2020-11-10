@@ -8,6 +8,7 @@ import lombok.Data;
 import lombok.RequiredArgsConstructor;
 
 import java.math.BigDecimal;
+import java.sql.SQLException;
 
 @Data
 @RequiredArgsConstructor
@@ -25,16 +26,18 @@ public class Main {
     private static final ProjectsDAO projectsDAO = new ProjectsDAO();
     private static final SkillsDAO skillsDAO = new SkillsDAO();
     private static final DevelopersSkillsDAO developersSkillsDAO = new DevelopersSkillsDAO();
+    private static final DevelopersProjectsDAO developersProjectsDAO = new DevelopersProjectsDAO();
     private static final DevelopersService developersService = new DevelopersService(developersDAO);
     private static final CompaniesService companiesService = new CompaniesService(companiesDAO);
     private static final CustomersService customersService = new CustomersService(customersDAO);
     private static final ProjectsService projectsService = new ProjectsService(projectsDAO);
     private static final SkillsService skillsService = new SkillsService(skillsDAO);
     private static final DevelopersSkillsService developersSkillsService = new DevelopersSkillsService(developersSkillsDAO);
+    private static final DevelopersProjectsService developersProjectsService = new DevelopersProjectsService(developersProjectsDAO);
 
     static ProgrammLanguages languages = new ProgrammLanguages();
 
-    public static void main(String[] args){
+    public static void main(String[] args) {
 
         displayAllTablesTestSimpleView();  //  Тестовый вывод таблиц
 
@@ -55,6 +58,8 @@ public class Main {
         showTables.displayEnities(developersSkillsService.findAllDevelopersByLanguageLevel(SkillLevel.MIDDLE), "MIDDLE LEVEL DEVELOPERS");
 
 
+        //  В таблице проектов (Projects) под номером 4 должна идти "Support APS"
+        System.out.println(developersProjectsService.findProjectAndAmountOfDevelopers(4L));
 
 
 
