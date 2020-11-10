@@ -9,6 +9,8 @@ import lombok.RequiredArgsConstructor;
 
 import java.math.BigDecimal;
 import java.sql.SQLException;
+import java.time.Instant;
+import java.util.Date;
 
 @Data
 @RequiredArgsConstructor
@@ -126,20 +128,18 @@ public class Main {
 
 
        //  Открываем новый проект
-/*
-        try {
-            projectsService.addNewProject(new Projects(6L, "Project WOW", new BigDecimal(5000)));
+/*        try {
+            projectsService.addNewProject(new Projects(6L, "Project WOW", new BigDecimal(5000), Date.from(Instant.ofEpochSecond(20-10-11))));
             System.out.println("OK!");
         }
         catch (InternalException exception) {
             System.out.println("Что-то не получилось!");
-        }
-*/
+        }*/
 
 
         //  Закрываем проект
-/*
 
+/*
         try {
             projectsService.deleteProject(6L);
             System.out.println("Жалко... Хороший был проект.");
@@ -147,8 +147,8 @@ public class Main {
         catch (InternalException exception) {
             System.out.println("Видимо, очень прибыльный :)  Не закрывается никак!");
         }
-
 */
+
 
 
         //  Находим нового клиента
