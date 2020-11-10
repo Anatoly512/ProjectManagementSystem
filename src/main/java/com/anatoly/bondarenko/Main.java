@@ -9,7 +9,9 @@ import lombok.RequiredArgsConstructor;
 
 import java.math.BigDecimal;
 import java.sql.SQLException;
-import java.time.Instant;
+import java.text.DateFormat;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.Date;
 
 @Data
@@ -128,18 +130,26 @@ public class Main {
 
 
        //  Открываем новый проект
-/*        try {
-            projectsService.addNewProject(new Projects(6L, "Project WOW", new BigDecimal(5000), Date.from(Instant.ofEpochSecond(20-10-11))));
+/*
+        try {
+
+            String dateString = "20-10-11";
+            DateFormat df = new SimpleDateFormat("yyyy-MM-dd");
+
+            Date d1 = df.parse(dateString);
+
+            projectsService.addNewProject(new Projects(6L, "Project WOW", new BigDecimal(5000), d1));
             System.out.println("OK!");
         }
-        catch (InternalException exception) {
+        catch (InternalException | ParseException exception) {
             System.out.println("Что-то не получилось!");
-        }*/
+        }
 
+*/
 
         //  Закрываем проект
-
 /*
+
         try {
             projectsService.deleteProject(6L);
             System.out.println("Жалко... Хороший был проект.");
@@ -147,8 +157,8 @@ public class Main {
         catch (InternalException exception) {
             System.out.println("Видимо, очень прибыльный :)  Не закрывается никак!");
         }
-*/
 
+*/
 
 
         //  Находим нового клиента

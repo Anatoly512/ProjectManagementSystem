@@ -26,6 +26,7 @@ public class Projects {
     }
 
 
+
 // getters  (Lombok почему-то не создал их автоматически, поэтому по старинке)
 
     public String getProjectsName() {
