@@ -156,12 +156,32 @@ public class ShowTables {
             int age = developer.getAge();
             BigDecimal salary = developer.getSalary();
 
-            System.out.println(String.format(" " + string + ":  id = %d, name = %s, genger = %s, age = %s, salary = %s", id, name, gender, age, salary));
+            System.out.println(String.format(string + " id = %d, name = %s, genger = %s, age = %s, salary = %s", id, name, gender, age, salary));
+
+        }
+
+    }
+
+
+    //  Перегрузка метода
+    public void displayEnities(List<Developers> list) {
+
+        for (Developers developer : list) {
+
+            Long id = developer.getId();
+            String name = developer.getName();
+            Gender gender = developer.getGender();
+            int age = developer.getAge();
+            BigDecimal salary = developer.getSalary();
+
+            System.out.println(String.format("  id = %d, name = %s, genger = %s, age = %s, salary = %s", id, name, gender, age, salary));
 
         }
 
 
-    }
+
+}
+
 
 
 

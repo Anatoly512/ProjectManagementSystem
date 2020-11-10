@@ -50,16 +50,22 @@ public class Main {
 
 
         // список всех Java разработчиков
-        showTables.displayEnities(developersSkillsService.findAllDevelopersByLanguage(languages.JAVA), "JAVA DEVELOPERS");
+        showTables.displayEnities(developersSkillsService.findAllDevelopersByLanguage(languages.JAVA), "JAVA DEVELOPERS : ");
 
 
         // список всех middle разработчиков
         System.out.println();
-        showTables.displayEnities(developersSkillsService.findAllDevelopersByLanguageLevel(SkillLevel.MIDDLE), "MIDDLE LEVEL DEVELOPERS");
+        showTables.displayEnities(developersSkillsService.findAllDevelopersByLanguageLevel(SkillLevel.MIDDLE), "MIDDLE LEVEL DEVELOPERS : ");
 
 
         //  В таблице проектов (projects) под номером 4 должна идти "Support APS",  а разработчиков у этого проекта (amountsOfDevelopers) должно быть 4"
         System.out.println(developersProjectsService.findProjectAndAmountOfDevelopers(4L));
+
+
+        //  Все разработчики проекта (передать id проекта в конструктор)
+        showTables.displayEnities(developersProjectsService.findAllDevelopersOnTheProject(4L));
+
+
 
 
 

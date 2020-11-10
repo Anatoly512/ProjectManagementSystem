@@ -1,8 +1,10 @@
 package com.anatoly.bondarenko.service;
 
 import com.anatoly.bondarenko.DAO.DevelopersProjectsDAO;
+import com.anatoly.bondarenko.domain.Developers;
 import com.anatoly.bondarenko.domain.DevelopersProjects;
 
+import java.sql.SQLException;
 import java.util.List;
 
 public class DevelopersProjectsService {
@@ -20,6 +22,10 @@ public class DevelopersProjectsService {
 
     }
 
+
+    public List<Developers> findAllDevelopersOnTheProject(Long id) {
+        return new DevelopersProjectsDAO().findAllDevelopersOfProject(id);
+    }
 
 
 

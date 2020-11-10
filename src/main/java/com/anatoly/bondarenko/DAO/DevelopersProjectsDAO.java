@@ -1,7 +1,9 @@
 package com.anatoly.bondarenko.DAO;
 
 import com.anatoly.bondarenko.Main;
+import com.anatoly.bondarenko.domain.Developers;
 import com.anatoly.bondarenko.domain.DevelopersProjects;
+import com.anatoly.bondarenko.domain.Gender;
 
 import java.math.BigDecimal;
 import java.sql.*;
@@ -90,6 +92,36 @@ public class DevelopersProjectsDAO {
         return projectsDevelopers;
     }
 
+
+
+    public List<Developers> findAllDevelopersOfProject(Long id){
+        List<Developers> developersList = new ArrayList<>();
+
+        String queryForAllDevelopers = String.format("SELECT * FROM developers_projects dp INNER JOIN projects p ON dp.projects_id = p.id INNER JOIN developers d ON dp.developers_id = d.id WHERE p.id = %d", id);
+        System.out.println("\n" + queryForAllDevelopers);
+
+        try {
+            connection = DriverManager.getConnection(Main.getURL(), Main.getUser(), Main.getPassword());
+            statement = connection.createStatement();
+            resultSet = statement.executeQuery(queryForAllDevelopers);
+
+            while (resultSet.next()){
+                Long developerId = resultSet.getLong("id");
+                String name = resultSet.getString("name");
+                Gender gender = Gender.valueOf(resultSet.getString("gender").toUpperCase());
+                Integer age = resultSet.getInt("age");
+                BigDecimal salary = resultSet.getBigDecimal("salary");
+                developersList.add(new Developers(developerId,name, gender,age,salary));
+            }
+
+            connection.close();
+        }
+        catch (SQLException exception){
+            System.out.println("Error message : " + exception);
+        }
+
+        return developersList;
+    }
 
 
 
