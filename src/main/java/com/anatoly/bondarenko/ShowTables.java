@@ -26,7 +26,8 @@ public class ShowTables {
                 String genderString = resultSet.getString("gender");
                 Gender gender = Gender.valueOf(genderString);
                 int age = resultSet.getInt("age");
-                System.out.println(String.format(" DEVELOPERS:  id = %d, name = %s, genger = %s, age = %s", id, name, gender, age));
+                BigDecimal salary = resultSet.getBigDecimal("salary");
+                System.out.println(String.format(" DEVELOPERS:  id = %d, name = %s, genger = %s, age = %s, salary = %s", id, name, gender, age, salary));
             }
         } catch (SQLException exception) {
             developersDAO.logger.error("Error occurred while getting entities. Exeption message: {}", exception.getMessage());

@@ -50,7 +50,7 @@ public class Main {
         //  Donald's interview
 /*
         try {
-            developersService.addNewDeveloper(new Developers(6L, "Trump Donald", Gender.MALE, 70));
+            developersService.addNewDeveloper(new Developers(6L, "Trump Donald", Gender.MALE, 70, new BigDecimal(1800)));
             System.out.println("Welcome to go home, Donald!");
         }
          catch (InternalException exception) {
@@ -70,7 +70,6 @@ public class Main {
             System.out.println("Впрочем, возможно такого работника у нас и не было.");
         }
 */
-
 
 
         //  Основываем новую компанию
