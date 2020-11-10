@@ -3,6 +3,7 @@ package com.anatoly.bondarenko.DAO;
 import com.anatoly.bondarenko.Main;
 import com.anatoly.bondarenko.domain.DevelopersProjects;
 
+import java.math.BigDecimal;
 import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
@@ -52,16 +53,39 @@ public class DevelopersProjectsDAO {
             }
 
             connection.close();
-
         }
-            catch (SQLException exception){
-                System.out.println("Error message : " + exception);
-            }
+
+        catch (SQLException exception){
+            System.out.println("Error message : " + exception);
+        }
 
         System.out.println("\nProjects name : " + name);
         System.out.println("Amount of developers : " + amount);
 
         projectsDevelopers.add(new DevelopersProjects(name, amount));
+
+
+        BigDecimal sumOfSalary = new BigDecimal(0);
+
+        String queryForSum = String.format("SELECT sum(salary) s FROM developers_projects dp INNER JOIN projects p ON dp.projects_id = p.id INNER JOIN developers d ON dp.developers_id = d.id WHERE p.id = %d ", id);
+
+        try {
+            connection = DriverManager.getConnection(Main.getURL(), Main.getUser(), Main.getPassword());
+            statement = connection.createStatement();
+            resultSet = statement.executeQuery(queryForSum);
+
+            while (resultSet.next()){
+                sumOfSalary = resultSet.getBigDecimal("s");
+            }
+
+            System.out.println("Sum of all developer's salary : " + sumOfSalary);
+
+            connection.close();
+        }
+
+        catch (SQLException exception){
+            System.out.println("Error message : " + exception);
+        }
 
         return projectsDevelopers;
     }
