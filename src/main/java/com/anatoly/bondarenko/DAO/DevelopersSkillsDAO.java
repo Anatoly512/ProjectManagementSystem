@@ -22,7 +22,7 @@ public class DevelopersSkillsDAO {
     public List<Developers> findAllDevelopersByLanguage(String language){
         List<Developers> developers = new ArrayList<>();
 
-        String queryForDevelopersByLanguage = String.format(" SELECT * FROM developers_skills ds inner join developers d on ds.developers_id = d.id inner join skills s on ds.skills_id = s.id where s.language = '%s' ", language);
+        String queryForDevelopersByLanguage = String.format(" SELECT * FROM developers_skills ds INNER JOIN developers d ON ds.developers_id = d.id INNER JOIN skills s ON ds.skills_id = s.id WHERE s.language = '%s' ", language);
  //     System.out.println(queryForDevelopersByLanguage);
 
         try {
@@ -54,7 +54,7 @@ public class DevelopersSkillsDAO {
         List<Developers> developers = new ArrayList<>();
         String level = String.valueOf(skillLevel);
 
-        String queryForDevelopersByLanguageLevel = String.format("SELECT * FROM developers_skills ds inner join developers d on ds.developers_id = d.id inner join skills s on ds.skills_id = s.id  where s.level = '%s' ORDER BY d.id;", level);
+        String queryForDevelopersByLanguageLevel = String.format("SELECT * FROM developers_skills ds INNER JOIN developers d ON ds.developers_id = d.id INNER JOIN skills s ON ds.skills_id = s.id WHERE s.level = '%s' ORDER BY d.id;", level);
 //      System.out.println(queryForDevelopersByLanguageLevel);
 
         try {
