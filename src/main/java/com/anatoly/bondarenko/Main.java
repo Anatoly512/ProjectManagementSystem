@@ -17,18 +17,22 @@ public class Main {
     private static final String USER = "postgres";
     private static final String PASSWORD = "12345";
 
-    static ShowTables showTables = new ShowTables();      //  Все представления данных вынесены в класс ShowTables
+    static ShowTables showTables = new ShowTables();          //  Все представления данных вынесены в класс ShowTables
 
     private static final DevelopersDAO developersDAO = new DevelopersDAO();
     private static final CompaniesDAO companiesDAO = new CompaniesDAO();
     private static final CustomersDAO customersDAO = new CustomersDAO();
     private static final ProjectsDAO projectsDAO = new ProjectsDAO();
     private static final SkillsDAO skillsDAO = new SkillsDAO();
+    private static final DevelopersSkillsDAO developersSkillsDAO = new DevelopersSkillsDAO();
     private static final DevelopersService developersService = new DevelopersService(developersDAO);
     private static final CompaniesService companiesService = new CompaniesService(companiesDAO);
     private static final CustomersService customersService = new CustomersService(customersDAO);
     private static final ProjectsService projectsService = new ProjectsService(projectsDAO);
     private static final SkillsService skillsService = new SkillsService(skillsDAO);
+    private static final DevelopersSkillsService developersSkillsService = new DevelopersSkillsService(developersSkillsDAO);
+
+    static ProgrammLanguages languages = new ProgrammLanguages();
 
     public static void main(String[] args){
 
@@ -40,6 +44,16 @@ public class Main {
         showTables.displayCustomers(customersDAO);
         showTables.displayProjects(projectsDAO);
         showTables.displaySkills(skillsDAO);
+
+
+        // список всех Java разработчиков
+        showTables.displayEnities(developersSkillsService.findAllDevelopersByLanguage(languages.JAVA), "JAVA DEVELOPERS");
+
+
+        // список всех middle разработчиков
+        System.out.println();
+        showTables.displayEnities(developersSkillsService.findAllDevelopersByLanguageLevel(SkillLevel.MIDDLE), "MIDDLE LEVEL DEVELOPERS");
+
 
 
 

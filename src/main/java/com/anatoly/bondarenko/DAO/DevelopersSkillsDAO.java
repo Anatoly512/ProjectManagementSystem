@@ -3,6 +3,7 @@ package com.anatoly.bondarenko.DAO;
 import com.anatoly.bondarenko.Main;
 import com.anatoly.bondarenko.domain.Developers;
 import com.anatoly.bondarenko.domain.Gender;
+import com.anatoly.bondarenko.domain.SkillLevel;
 import lombok.Data;
 
 import java.math.BigDecimal;
@@ -21,7 +22,8 @@ public class DevelopersSkillsDAO {
     public List<Developers> findAllDevelopersByLanguage(String language){
         List<Developers> developers = new ArrayList<>();
 
-        String queryForDevelopersByLanguage = String.format(" SELECT * FROM my_db.developers_skills ds inner join developers d on ds.developer_id = d.developers_id inner join skills s on ds.skill_id = s.Skills_id where s.name = '%s' ", language);
+        String queryForDevelopersByLanguage = String.format(" SELECT * FROM developers_skills ds inner join developers d on ds.developers_id = d.id inner join skills s on ds.skills_id = s.id where s.language = '%s' ", language);
+ //     System.out.println(queryForDevelopersByLanguage);
 
         try {
             connection = DriverManager.getConnection(Main.getURL(),Main.getUser(),Main.getPassword());
@@ -29,15 +31,13 @@ public class DevelopersSkillsDAO {
             resultSet = statement.executeQuery(queryForDevelopersByLanguage);
 
             while (resultSet.next()){
-                Long id = resultSet.getLong("developer_id");
+                Long id = resultSet.getLong("id");
                 String name = resultSet.getString("name");
                 Gender gender = Gender.valueOf(resultSet.getString("gender").toUpperCase());
                 Integer age = resultSet.getInt("age");
                 BigDecimal salary = resultSet.getBigDecimal("salary");
-                developers.add(new Developers(id,name, gender,age,salary));
+                developers.add(new Developers(id, name, gender, age, salary));
             }
-
-            System.out.println(developers);   ///  remove to Main !!!
 
             connection.close();
             statement.close();
@@ -50,15 +50,17 @@ public class DevelopersSkillsDAO {
         return developers;
     }
 
-    public List<Developers> findAllDevelopersByLanguageLevel(String level){
+    public List<Developers> findAllDevelopersByLanguageLevel(SkillLevel skillLevel){
         List<Developers> developers = new ArrayList<>();
+        String level = String.valueOf(skillLevel);
 
-        String queryForLanguageLevel = String.format("SELECT * FROM developers_skills ds inner join developers d on ds.developer_id = d.developers_id inner join skills s on ds.skill_id = s.Skills_id  where s.level = '%s' group by d.developers_id", level);
+        String queryForDevelopersByLanguageLevel = String.format("SELECT * FROM developers_skills ds inner join developers d on ds.developers_id = d.id inner join skills s on ds.skills_id = s.id  where s.level = '%s' ORDER BY d.id;", level);
+//      System.out.println(queryForDevelopersByLanguageLevel);
 
         try {
             connection = DriverManager.getConnection(Main.getURL(),Main.getUser(),Main.getPassword());
             statement = connection.createStatement();
-            resultSet = statement.executeQuery(queryForLanguageLevel);
+            resultSet = statement.executeQuery(queryForDevelopersByLanguageLevel);
 
             while (resultSet.next()){
 
@@ -69,8 +71,6 @@ public class DevelopersSkillsDAO {
                 BigDecimal salary = resultSet.getBigDecimal("salary");
                 developers.add(new Developers(id, name, gender, age, salary));
             }
-
-            System.out.println(developers);  ///  remove to Main !!!
 
             connection.close();
             statement.close();

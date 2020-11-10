@@ -1,12 +1,14 @@
 package com.anatoly.bondarenko;
 
 import com.anatoly.bondarenko.DAO.*;
+import com.anatoly.bondarenko.domain.Developers;
 import com.anatoly.bondarenko.domain.Gender;
 import com.anatoly.bondarenko.domain.SkillLevel;
 import com.sun.jdi.InternalException;
 
 import java.math.BigDecimal;
 import java.sql.*;
+import java.util.List;
 
 public class ShowTables {
 
@@ -144,4 +146,26 @@ public class ShowTables {
     }
 
 
+    public void displayEnities(List<Developers> list, String string) {
+
+        for (Developers developer : list) {
+
+            Long id = developer.getId();
+            String name = developer.getName();
+            Gender gender = developer.getGender();
+            int age = developer.getAge();
+            BigDecimal salary = developer.getSalary();
+
+            System.out.println(String.format(" " + string + ":  id = %d, name = %s, genger = %s, age = %s, salary = %s", id, name, gender, age, salary));
+
+        }
+
+
+    }
+
+
+
 }
+
+
+

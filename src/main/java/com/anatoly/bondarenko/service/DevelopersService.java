@@ -5,7 +5,6 @@ import com.anatoly.bondarenko.domain.Developers;
 
 import java.util.List;
 
-
 public class DevelopersService {
 
     private final DevelopersDAO developersDAO;
