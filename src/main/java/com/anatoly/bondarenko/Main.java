@@ -1,13 +1,13 @@
 package com.anatoly.bondarenko;
 
 import com.anatoly.bondarenko.DAO.*;
-import com.anatoly.bondarenko.domain.Companies;
-import com.anatoly.bondarenko.domain.Developers;
-import com.anatoly.bondarenko.domain.Gender;
+import com.anatoly.bondarenko.domain.*;
 import com.anatoly.bondarenko.service.*;
 import com.sun.jdi.InternalException;
 import lombok.Data;
 import lombok.RequiredArgsConstructor;
+
+import java.math.BigDecimal;
 
 @Data
 @RequiredArgsConstructor
@@ -40,6 +40,7 @@ public class Main {
         showTables.displayCustomers(customersDAO);
         showTables.displayProjects(projectsDAO);
         showTables.displaySkills(skillsDAO);
+
 
 
 
@@ -82,7 +83,7 @@ public class Main {
             System.out.println("Что-то не получилось!");
         }
 
-        */
+*/
 
 
         //  Закрываем компанию
@@ -94,9 +95,62 @@ public class Main {
         catch (InternalException exception) {
             System.out.println("Какая у них крыша!.. Не закрывается! :)");
             System.out.println("Впрочем, возможно такой компании и не было.");
-        }*/
+        }
+*/
 
 
+
+       //  Открываем новый проект
+/*
+        try {
+            projectsService.addNewProject(new Projects(6L, "Project WOW", new BigDecimal(5000)));
+            System.out.println("OK!");
+        }
+        catch (InternalException exception) {
+            System.out.println("Что-то не получилось!");
+        }
+*/
+
+
+        //  Закрываем проект
+/*
+
+        try {
+            projectsService.deleteProject(6L);
+            System.out.println("Жалко... Хороший был проект.");
+        }
+        catch (InternalException exception) {
+            System.out.println("Видимо, очень прибыльный :)  Не закрывается никак!");
+        }
+
+*/
+
+
+        //  Находим нового клиента
+/*
+        try {
+            customersService.addNewCustomer(new Customers(6L, "Bill Gates"));
+            System.out.println("Ура!  У нас новый заказчик!");
+        }
+        catch (InternalException exception) {
+            System.out.println("Заказчику что-то не понравилось... ((( ");
+        }
+
+*/
+
+
+        //  Расторгаем договор с клиентом
+/*
+
+        try {
+            customersService.deleteCustomer(6L);
+            System.out.println("У нас этих заказчиков - завались!  Еще найдем!!!");
+        }
+        catch (InternalException exception) {
+            System.out.println("Вот прилипучий... Не уходит!");
+        }
+
+*/
 
 
 
