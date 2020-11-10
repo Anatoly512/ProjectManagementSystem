@@ -129,7 +129,7 @@ public class DevelopersProjectsDAO {
     public List<DevelopersProjects> findAllProjectsAndItsAmountOfDevelopers(){
         List<DevelopersProjects> projectsDevelopers = new ArrayList<>();
 
-        String queryForListOfAllProjects = "SELECT date, projects_name, count(dp.developers_id) FROM projects p INNER JOIN developers_projects dp ON p.id = dp.projects_id GROUP BY dp.projects_id";
+        String queryForListOfAllProjects = "SELECT p.date dt, projects_name pn, count(dp.developers_id) c FROM projects p INNER JOIN developers_projects dp ON p.id = dp.projects_id GROUP BY p.id";
         System.out.println("\n" + queryForListOfAllProjects);
 
         try {
@@ -138,12 +138,11 @@ public class DevelopersProjectsDAO {
             resultSet = statement.executeQuery(queryForListOfAllProjects);
 
             while(resultSet.next()){
-                Date date = resultSet.getDate("date");
-                String name = resultSet.getString("p.name");
-                Integer amountOfDevelopers = resultSet.getInt("count(dp.developers_id)");
+                Date date = resultSet.getDate("dt");
+                String name = resultSet.getString("pn");
+                Integer amountOfDevelopers = resultSet.getInt("c");
                 projectsDevelopers.add(new DevelopersProjects(name, amountOfDevelopers, date));
             }
-            System.out.println(projectsDevelopers);
 
             connection.close();
         }
