@@ -58,7 +58,7 @@ public class Main {
         showTables.displayEnities(developersSkillsService.findAllDevelopersByLanguageLevel(SkillLevel.MIDDLE), "MIDDLE LEVEL DEVELOPERS");
 
 
-        //  В таблице проектов (Projects) под номером 4 должна идти "Support APS"
+        //  В таблице проектов (projects) под номером 4 должна идти "Support APS",  а разработчиков у этого проекта (amountsOfDevelopers) должно быть 4"
         System.out.println(developersProjectsService.findProjectAndAmountOfDevelopers(4L));
 
 

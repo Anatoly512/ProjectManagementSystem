@@ -39,7 +39,7 @@ public class DevelopersProjectsDAO {
         }
 
 
-        String queryForAmountOfDevelopers = "SELECT count(developers_id) c FROM projects p INNER JOIN developers_projects dp ON p.id = dp.projects_id";
+        String queryForAmountOfDevelopers = String.format("SELECT count(developers_id) c FROM projects p INNER JOIN developers_projects dp ON p.id = dp.projects_id WHERE p.id = '%s'", id);
         System.out.println("\n" + queryForProjects);
 
         try {
@@ -65,6 +65,7 @@ public class DevelopersProjectsDAO {
 
         return projectsDevelopers;
     }
+
 
 
 
