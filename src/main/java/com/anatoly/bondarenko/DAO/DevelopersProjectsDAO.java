@@ -40,7 +40,7 @@ public class DevelopersProjectsDAO {
 
 
         String queryForAmountOfDevelopers = String.format("SELECT count(developers_id) c FROM projects p INNER JOIN developers_projects dp ON p.id = dp.projects_id WHERE p.id = '%s'", id);
-        System.out.println("\n" + queryForProjects);
+        System.out.println(queryForAmountOfDevelopers);
 
         try {
             connection = DriverManager.getConnection(Main.getURL(), Main.getUser(), Main.getPassword());
@@ -58,8 +58,8 @@ public class DevelopersProjectsDAO {
                 System.out.println("Error message : " + exception);
             }
 
-        System.out.println(name);
-        System.out.println(amount);
+        System.out.println("\nProjects name : " + name);
+        System.out.println("Amount of developers : " + amount);
 
         projectsDevelopers.add(new DevelopersProjects(name, amount));
 
