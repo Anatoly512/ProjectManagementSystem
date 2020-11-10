@@ -59,7 +59,7 @@ public class Main {
 
 
         //  В таблице проектов (projects) под номером 4 должна идти "Support APS",  а разработчиков у этого проекта (amountsOfDevelopers) должно быть 4"
-        System.out.println(developersProjectsService.findProjectAndAmountOfDevelopers(4L));
+        developersProjectsService.findProjectAndAmountOfDevelopers(4L);
 
 
         //  Все разработчики проекта (передать id проекта в конструктор)
