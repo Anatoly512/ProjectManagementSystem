@@ -66,7 +66,8 @@ public class Main {
         showTables.displayEnities(developersProjectsService.findAllDevelopersOnTheProject(4L));
 
 
-
+        // !
+        System.out.println(developersProjectsService.findAllProjectsAndItsAmountOfDevelopers());
 
 
 

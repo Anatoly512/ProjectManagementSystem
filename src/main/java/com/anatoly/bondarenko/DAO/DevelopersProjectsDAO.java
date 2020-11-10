@@ -8,6 +8,7 @@ import com.anatoly.bondarenko.domain.Gender;
 import java.math.BigDecimal;
 import java.sql.*;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 public class DevelopersProjectsDAO {
@@ -122,6 +123,39 @@ public class DevelopersProjectsDAO {
 
         return developersList;
     }
+
+
+
+    public List<DevelopersProjects> findAllProjectsAndItsAmountOfDevelopers(){
+        List<DevelopersProjects> projectsDevelopers = new ArrayList<>();
+
+        String queryForListOfAllProjects = "SELECT date, projects_name, count(dp.developers_id) FROM projects p INNER JOIN developers_projects dp ON p.id = dp.projects_id GROUP BY dp.projects_id";
+        System.out.println("\n" + queryForListOfAllProjects);
+
+        try {
+            connection = DriverManager.getConnection(Main.getURL(), Main.getUser(), Main.getPassword());
+            statement = connection.createStatement();
+            resultSet = statement.executeQuery(queryForListOfAllProjects);
+
+            while(resultSet.next()){
+                Date date = resultSet.getDate("date");
+                String name = resultSet.getString("p.name");
+                Integer amountOfDevelopers = resultSet.getInt("count(dp.developers_id)");
+                projectsDevelopers.add(new DevelopersProjects(name, amountOfDevelopers, date));
+            }
+            System.out.println(projectsDevelopers);
+
+            connection.close();
+        }
+
+        catch (SQLException exception){
+            System.out.println("Error message : " + exception);
+        }
+
+        return projectsDevelopers;
+
+    }
+
 
 
 

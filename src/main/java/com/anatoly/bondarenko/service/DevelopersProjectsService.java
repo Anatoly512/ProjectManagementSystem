@@ -4,7 +4,6 @@ import com.anatoly.bondarenko.DAO.DevelopersProjectsDAO;
 import com.anatoly.bondarenko.domain.Developers;
 import com.anatoly.bondarenko.domain.DevelopersProjects;
 
-import java.sql.SQLException;
 import java.util.List;
 
 public class DevelopersProjectsService {
@@ -15,6 +14,7 @@ public class DevelopersProjectsService {
     public DevelopersProjectsService(DevelopersProjectsDAO developersProjectsDAO) {
         this.developersProjectsDAO = developersProjectsDAO;
     }
+
 
 
     public List<DevelopersProjects> findProjectAndAmountOfDevelopers(Long id) {
@@ -28,6 +28,9 @@ public class DevelopersProjectsService {
     }
 
 
+    public List<DevelopersProjects> findAllProjectsAndItsAmountOfDevelopers() {
+        return new DevelopersProjectsDAO().findAllProjectsAndItsAmountOfDevelopers();
+    }
 
 
 

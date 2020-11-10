@@ -3,6 +3,7 @@ package com.anatoly.bondarenko.domain;
 import lombok.Data;
 
 import java.math.BigDecimal;
+import java.util.Date;
 
 @Data
 public class Projects {
@@ -10,12 +11,14 @@ public class Projects {
     private Long id;
     private String projectsName;
     private BigDecimal cost;
+    private Date date;
 
 
-    public Projects(Long id, String projectsName, BigDecimal cost) {
+    public Projects(Long id, String projectsName, BigDecimal cost, Date date) {
         this.id = id;
         this.projectsName = projectsName;
         this.cost = cost;
+        this.date = date;
     }
 
     public Projects() {     //  Этот конструктор нужен для корректной работы класса DevelopersDAO,
@@ -33,6 +36,10 @@ public class Projects {
         return this.cost;
     }
 
+    public Date getDate() {
+        return this.date;
+    }
+
     public Long getId() {
         return this.id;
     }
@@ -46,6 +53,10 @@ public class Projects {
 
     public void setCost(BigDecimal cost) {
         this.cost = cost;
+    }
+
+    public void setDate(Date date) {
+        this.date = date;
     }
 
     public void setId(Long id) {
